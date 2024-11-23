@@ -1,5 +1,7 @@
 FROM public.ecr.aws/ubuntu/ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
+RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.d/ubuntu.sources
+RUN sed -i 's/http:/https:/g' /etc/apt/sources.list.d/ubuntu.sources
 RUN apt-get update && \
     apt-get --assume-yes \
             --no-install-recommends \
